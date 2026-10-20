@@ -1,1 +1,16 @@
-console.log('Happy developing ✨')
+function Add() {
+
+}
+
+function Subtract (){
+
+}
+
+function Divide() {
+
+}
+
+function Multiply(){
+
+}
+

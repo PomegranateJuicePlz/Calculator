@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,45 +7,54 @@
     <link rel="stylesheet" href="calculator.css">
 </head>
 <body>
+
 <div class="calculator">
 
-    <div class="display" id="display" role="textbox" aria-label="Calculator display" aria-live="polite"></div>
+    <div class="left-side">
 
-    <div class="keys">
-        <div class="keypad">
-            <button data-value="^">^</button>
-            <button data-value="(">(</button>
-            <button data-value=")">)</button>
-            <button data-value="7">7</button>
-            <button data-value="8">8</button>
-            <button data-value="9">9</button>
-            <button data-value="4">4</button>
-            <button data-value="5">5</button>
-            <button data-value="6">6</button>
-            <button data-value="1">1</button>
-            <button data-value="2">2</button>
-            <button data-value="3">3</button>
-            <button data-value="0">0</button>
-            <button data-value=".">.</button>
-            <button data-value="%">%</button>
-        </div>
+        <div id="display"></div>
 
-        <div class="operators">
-            <button data-value="/">/</button>
-            <button data-value="*">*</button>
-            <button data-value="-">-</button>
-            <button data-value="+">+</button>
-            <button data-action="equals">=</button>
+        <div class="keys">
+
+            <div class="keypad">
+                <button class="key">^</button>
+                <button class="key">(</button>
+                <button class="key">)</button>
+                <button class="key">7</button>
+                <button class="key">8</button>
+                <button class="key">9</button>
+                <button class="key">4</button>
+                <button class="key">5</button>
+                <button class="key">6</button>
+                <button class="key">1</button>
+                <button class="key">2</button>
+                <button class="key">3</button>
+                <button class="key">0</button>
+                <button class="key">.</button>
+                <button class="key">%</button>
+            </div>
+
+            <div class="operators">
+                <button class="key">/</button>
+                <button class="key">*</button>
+                <button class="key">-</button>
+                <button class="key">+</button>
+                <button id="equals">=</button>
+            </div>
+
         </div>
     </div>
 
     <div class="dpad">
-        <button class="arrow arrow-up" data-action="up" aria-label="History up">↑</button>
-        <button class="arrow arrow-left" data-action="left" aria-label="Move cursor left">&lt;</button>
-        <button class="clr" data-action="clear">CLR</button>
-        <button class="arrow arrow-right" data-action="right" aria-label="Move cursor right">&gt;</button>
-        <button class="arrow arrow-down" data-action="down" aria-label="History down">↓</button>
+        <button id="up" class="up-down" title="Older history">&#8743;</button>
+        <div class="middle">
+            <button id="left" class="arrow" title="Move cursor left">&lt;</button>
+            <button id="clear" class="clr">CLR</button>
+            <button id="right" class="arrow" title="Move cursor right">&gt;</button>
+        </div>
+        <button id="down" class="up-down" title="Newer history">&#8744;</button>
     </div>
+
 </div>
 
 <script src="index.js"></script>

@@ -1,193 +1,142 @@
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-:root {
-    --u: min(1px, calc(94vw / 512));
-}
-
-html,
-body {
-    height: 100%;
-}
-
 body {
     display: flex;
-    align-items: center;
     justify-content: center;
-    background: #ffffff;
+    align-items: center;
+    height: 100vh;
+    margin: 0px;
+    background-color: white;
     font-family: Arial, Helvetica, sans-serif;
-    -webkit-tap-highlight-color: transparent;
 }
 
 button {
-    font-family: inherit;
+    font-family: Arial, Helvetica, sans-serif;
     cursor: pointer;
-    touch-action: manipulation;
-    user-select: none;
-    -webkit-user-select: none;
 }
 
 .calculator {
-    display: grid;
-    grid-template-columns: calc(260 * var(--u)) auto;
-    grid-template-areas:
-    "display dpad"
-    "keys    dpad";
-    column-gap: calc(28 * var(--u));
-    row-gap: calc(16 * var(--u));
-    padding: calc(28 * var(--u));
-    background: #9900ff;
-    border-radius: calc(56 * var(--u));
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 20px;
+    background-color: #9900ff;
+    border-radius: 40px;
 }
 
-.display {
-    grid-area: display;
-    position: relative;
-    width: 100%;
-    height: calc(64 * var(--u));
-    padding: 0 calc(14 * var(--u));
-    background: #595959;
-    border-radius: calc(10 * var(--u));
-    color: #ffffff;
-    font-size: calc(34 * var(--u));
-    line-height: calc(64 * var(--u));
-    white-space: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: none;
+.left-side {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.display::-webkit-scrollbar {
-    display: none;
-}
-
-.display.error {
-    color: #ffc4c4;
+#display {
+    display: flex;
+    align-items: center;
+    width: 170px;
+    height: 48px;
+    padding: 0px 10px;
+    background-color: #595959;
+    border-radius: 8px;
+    color: white;
+    font-size: 28px;
+    overflow: hidden;
 }
 
 .caret {
-    display: inline-block;
-    width: calc(2 * var(--u));
-    height: calc(36 * var(--u));
-    margin: 0 calc(1 * var(--u));
-    background: #ffffff;
-    vertical-align: middle;
-    animation: blink 1s steps(1) infinite;
+    color: #d9b3ff;
 }
 
+#display.error {
+    color: #ffb3b3;
+}
 
 .keys {
-    grid-area: keys;
     display: flex;
-    gap: calc(8 * var(--u));
+    gap: 6px;
 }
 
 .keypad {
     display: grid;
-    grid-template-columns: repeat(3, calc(64 * var(--u)));
-    grid-auto-rows: calc(54 * var(--u));
-    gap: calc(2 * var(--u));
-    padding: calc(4 * var(--u));
-    background: #595959;
-    border-radius: calc(12 * var(--u));
+    grid-template-columns: repeat(3, 44px);
+    grid-template-rows: repeat(5, 44px);
+    gap: 3px;
+    padding: 4px;
+    background-color: #595959;
+    border-radius: 10px;
 }
 
 .keypad button {
-    background: #5f5f5f;
-    color: #ffffff;
-    font-size: calc(24 * var(--u));
+    background-color: #636363;
+    color: white;
+    font-size: 20px;
     border: none;
-    border-radius: calc(8 * var(--u));
+    border-radius: 6px;
 }
 
 .keypad button:active {
-    background: #7a7a7a;
+    background-color: #7a7a7a;
 }
+
 .operators {
     display: flex;
     flex-direction: column;
-    gap: calc(6 * var(--u));
+    gap: 5px;
 }
 
 .operators button {
-    flex: 1;
-    width: calc(48 * var(--u));
-    background: #ffffff;
-    color: #000000;
-    border: calc(2 * var(--u)) solid #222222;
-    border-radius: calc(8 * var(--u));
-    font-size: calc(30 * var(--u));
+    width: 38px;
+    height: 44px;
+    background-color: white;
+    color: black;
+    border: 2px solid #222222;
+    border-radius: 6px;
+    font-size: 24px;
     font-weight: bold;
 }
 
 .operators button:active {
-    background: #dddddd;
+    background-color: #dddddd;
 }
 
 .dpad {
-    --outer: calc(12 * var(--u));
-    --inner: calc(3 * var(--u));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
 
-    grid-area: dpad;
-    align-self: start;
-    display: grid;
-    grid-template-columns: calc(50 * var(--u)) calc(64 * var(--u)) calc(50 * var(--u));
-    grid-template-rows: calc(52 * var(--u)) calc(60 * var(--u)) calc(52 * var(--u));
-    grid-template-areas:
-    ".    up  .    "
-    "left clr right"
-    ".    down .   ";
-    gap: calc(2 * var(--u));
-    margin-top: calc(80 * var(--u));
+.middle {
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .dpad button {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #000000;
-    color: #ffffff;
+    height: 48px;
+    background-color: black;
+    color: white;
     border: none;
-    border-radius: var(--inner);
     font-weight: bold;
-    transition: opacity 0.15s;
 }
 
 .dpad button:active {
-    background: #333333;
+    background-color: #333333;
 }
 
 .arrow {
-    font-size: calc(26 * var(--u));
-}
-
-.dpad .arrow-up {
-    grid-area: up;
-    border-radius: var(--outer) var(--outer) var(--inner) var(--inner);
-}
-
-.dpad .arrow-down {
-    grid-area: down;
-    border-radius: var(--inner) var(--inner) var(--outer) var(--outer);
-}
-
-.dpad .arrow-left {
-    grid-area: left;
-    border-radius: var(--outer) var(--inner) var(--inner) var(--outer);
-}
-
-.dpad .arrow-right {
-    grid-area: right;
-    border-radius: var(--inner) var(--outer) var(--outer) var(--inner);
+    width: 34px;
+    font-size: 22px;
 }
 
 .clr {
-    grid-area: clr;
-    font-size: calc(20 * var(--u));
+    width: 46px;
+    font-size: 16px;
+}
+
+.up-down {
+    width: 46px;
+    font-size: 20px;
+}
+
+#display.history {
+    color: #e6ccff;
 }
